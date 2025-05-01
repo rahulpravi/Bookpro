@@ -1,448 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Hannah Claire | Author Assistant & KDP Publishing Expert">
-  <title>Hannah Claire | Author Assistant & KDP Publishing Expert</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@3.3.1/index.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    html {
-      scroll-behavior: smooth;
-      background: linear-gradient(120deg, #f4ecfa 0%, #f6fbf4 100%);
-    }
-    body {
-      font-family: 'InterVariable', 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    }
-    h1, h2, h3, .font-serif {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-    }
-    .section-fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(.45,.07,.52,.93), transform 1s cubic-bezier(.45,.07,.52,.93);
-    }
-    .section-fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-      background: #e9d5ff;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #c084fc;
-      border-radius: 6px;
-    }
-    section {
-      max-width: 950px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 48px;
-      padding-bottom: 48px;
-    }
-    @media (max-width: 900px) {
-      section { padding-left: 1rem; padding-right: 1rem; }
-    }
-    .book-card:hover {
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 12px 28px -8px #c084fc40, 0 4px 12px -2px #f472b650;
-    }
-    .genre-selected {
-      background: linear-gradient(90deg,#c084fc 0%,#f472b6 100%);
-      color: white !important;
-      box-shadow: 0 2px 12px #c084fc22;
-    }
-    .genre-btn {
-      transition: all 0.18s cubic-bezier(.47,1.64,.41,.8);
-    }
-    .book-link:hover { 
-      background: linear-gradient(90deg, #e879f9 0%, #a78bfa 100%) !important;
-      color: #fff !important;
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 2px 10px #c084fc30;
-    }
-    @media print {
-      html, body {
-        background: #fff !important;
-      }
-      section, body, .bg-white, .bg-gradient-to-br, .bg-gradient-to-r, .rounded-2xl, .rounded-xl, .rounded-t-xl, .rounded-full, .shadow, .shadow-md, .shadow-lg, .shadow-2xl {
-        background: #fff !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-      }
-      /* Remove nav shadow for clean PDF */
-      header, .shadow-sm, .shadow {
-        box-shadow: none !important;
-      }
-    }
-  </style>
-</head>
-<body class="bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50 text-gray-900">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul PR - Story Book Writer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8C6D46;
+            --secondary: #614B3A;
+            --accent: #D4A373;
+            --background: #FFF8E8;
+            --text: #2D2926;
+        }
 
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-30 bg-white bg-opacity-80 backdrop-blur border-b border-purple-100 py-3 shadow-sm">
-    <nav class="max-w-6xl mx-auto px-3 flex items-center justify-between">
-      <span class="text-2xl font-serif text-purple-800 tracking-wide">Hannah Claire</span>
-      <ul class="space-x-6 font-medium text-purple-700 hidden md:flex">
-        <li><a href="#about" class="hover:text-pink-600 transition-colors">About</a></li>
-        <li><a href="#services" class="hover:text-pink-600 transition-colors">Services</a></li>
-        <li><a href="#books" class="hover:text-pink-600 transition-colors">Books</a></li>
-        <li><a href="#contact" class="hover:text-pink-600 transition-colors">Contact</a></li>
-      </ul>
-      <button id="nav-toggle" class="md:hidden text-purple-700 text-2xl px-2 py-1 focus:outline-none"><i class="fas fa-bars"></i></button>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden bg-white">
-      <ul class="flex flex-col space-y-3 px-6 py-3 border-t border-purple-100">
-        <li><a href="#about" class="block text-purple-700 hover:text-pink-500">About</a></li>
-        <li><a href="#services" class="block text-purple-700 hover:text-pink-500">Services</a></li>
-        <li><a href="#books" class="block text-purple-700 hover:text-pink-500">Books</a></li>
-        <li><a href="#contact" class="block text-purple-700 hover:text-pink-500">Contact</a></li>
-      </ul>
-    </div>
-  </header>
+        * {
+            box-sizing: border-box;
+        }
 
-  <!-- Hero Section -->
-  <section id="home" class="pt-20 pb-12 flex flex-col items-center text-center relative">
-    <div class="relative">
-      <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
-        <svg class="w-96 h-96 opacity-40 blur-sm" style="position:absolute;top:-80px;left:-100px;" width="450" height="400" fill="none" viewBox="0 0 450 400">
-          <ellipse cx="225" cy="200" rx="200" ry="160" fill="#c084fc"/>
-          <ellipse cx="240" cy="160" rx="140" ry="120" fill="#f0abfc" opacity="0.5"/>
-        </svg>
-      </div>
-      <span class="inline-block rounded-full bg-purple-100 px-4 py-1 text-sm text-purple-700 tracking-wide mb-6 shadow">Author Assistant | KDP Publishing</span>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif mb-6 text-purple-800 leading-tight" style="text-shadow:0 2px 6px #f3e8ff80;">
-        Empowering Authors. Publishing Success.
-      </h1>
-      <p class="text-lg md:text-2xl text-gray-700 mb-7 max-w-xl mx-auto">I'm <b>Hannah Claire</b> – experienced author, self-publishing professional, and your expert partner to get your story published and thriving on <span class="text-pink-600">Amazon KDP</span> and beyond.</p>
-      <a href="#contact" class="inline-block bg-gradient-to-r from-pink-400 to-purple-700 text-white px-8 py-3 rounded-full shadow transition-all hover:scale-105 hover:from-fuchsia-500 hover:to-purple-500 focus:outline-none text-lg font-semibold">
-        Let's Connect <i class="fas fa-arrow-right ml-2"></i>
-      </a>
-    </div>
-  </section>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+        }
 
-  <!-- About Section -->
-  <section id="about" class="section-fade-in bg-white rounded-2xl shadow-md p-8 mt-8">
-    <div class="flex flex-col md:flex-row md:items-center gap-x-10 gap-y-6">
-      <div class="flex-shrink-0 flex justify-center">
-        <div class="rounded-full w-36 h-36 bg-gradient-to-tr from-fuchsia-200 via-purple-200 to-pink-100 flex items-center justify-center shadow-lg overflow-hidden">
-          <img src="FB_IMG.jpg" class="fas fa-feather-pointed text-fuchsia-600 text-6xl"></img>
-        </div>
-      </div>
-      <div>
-        <h2 class="text-3xl font-serif text-purple-700 mb-2">About Me</h2>
-        <p class="text-gray-700 text-lg mb-3">
-          <b>Hello! I’m Hannah, an accomplished author and expert in Amazon KDP publishing.</b>
-          Through years of hands-on experience, I've helped countless authors turn their stories into successful, self-published books. My passion lies in guiding aspiring writers from <span class="text-purple-600">manuscript</span> to <span class="text-pink-600">marketplace</span>.
-        </p>
-        <p class="text-gray-700 text-base mb-2">
-          Whether you’re a seasoned writer or just starting out, my mission is to empower you — to create, publish, and thrive on a global scale. I’ll help you <b>navigate KDP</b>, increase your book's visibility, and maximize your potential for success.
-        </p>
-        <p class="text-gray-700 text-base">
-          Every author has a unique voice. Let’s make sure yours is heard, and your book reaches its full potential.
-        </p>
-      </div>
-    </div>
-  </section>
+        h1, h2, h3, h4, h5 {
+            font-family: 'Merriweather', serif;
+        }
 
-  <!-- Services Section -->
-  <section id="services" class="section-fade-in mt-8">
-    <h2 class="text-3xl font-serif text-center text-purple-700 mb-12">My Services</h2>
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-x-10 gap-y-10">
-      <!-- Book Formatting -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-fuchsia-400">
-        <div class="flex items-center mb-3">
-          <span class="bg-fuchsia-100 text-fuchsia-600 rounded-full p-3 mr-3"><i class="fas fa-file-alt text-2xl"></i></span>
-          <span class="text-xl font-semibold text-fuchsia-900">Book Formatting</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">Professional formatting for Amazon KDP, B&N Press, Apple Books, Google Play & more. eBook, paperback, or both – I'll transform your manuscript into a clean, publish-ready file meeting all industry standards.</p>
-      </div>
-      <!-- Mock Up Book Cover Design -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-pink-300">
-        <div class="flex items-center mb-3">
-          <span class="bg-pink-100 text-pink-500 rounded-full p-3 mr-3"><i class="fas fa-book-open text-2xl"></i></span>
-          <span class="text-xl font-semibold text-pink-700">Mock Up Cover Design</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">Eye-catching, custom book covers reflecting your story's essence. Work with you from concept to completion for a cover that stands out and supports your book's success.</p>
-      </div>
-      <!-- Marketing -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-indigo-300">
-        <div class="flex items-center mb-3">
-          <span class="bg-indigo-100 text-indigo-500 rounded-full p-3 mr-3"><i class="fas fa-bullhorn text-2xl"></i></span>
-          <span class="text-xl font-semibold text-indigo-700">Marketing</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">Tailored marketing strategies to increase visibility, attract your target audience, and drive consistent sales. Listing optimization, social media, email campaigns, ad campaigns, and more.</p>
-      </div>
-      <!-- Book Cover Design -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-purple-300">
-        <div class="flex items-center mb-3">
-          <span class="bg-purple-100 text-purple-500 rounded-full p-3 mr-3"><i class="fas fa-palette text-2xl"></i></span>
-          <span class="text-xl font-semibold text-purple-700">Book Cover Design</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">Custom, professional paperback covers tailored to your genre and platform. High-res, print-ready designs formatted to KDP specs, with impeccable typography and bestseller appeal.</p>
-      </div>
-      <!-- Amazon KDP Book Publishing -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-pink-200">
-        <div class="flex items-center mb-3">
-          <span class="bg-pink-50 text-pink-400 rounded-full p-3 mr-3"><i class="fab fa-amazon text-2xl"></i></span>
-          <span class="text-xl font-semibold text-pink-600">Amazon KDP Publishing</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">End-to-end publishing on Amazon KDP and major platforms. Formatting, metadata, final upload – I handle it all for a seamless, confident book launch.</p>
-      </div>
-      <!-- Book Marketing & Crowdfunding -->
-      <div class="flex flex-col rounded-xl bg-white shadow-lg px-6 py-7 hover:shadow-2xl transition-shadow border-t-4 border-violet-200">
-        <div class="flex items-center mb-3">
-          <span class="bg-violet-50 text-violet-400 rounded-full p-3 mr-3"><i class="fas fa-rocket text-2xl"></i></span>
-          <span class="text-xl font-semibold text-violet-600">Marketing Plan & Crowdfunding</span>
-        </div>
-        <p class="text-gray-700 mb-2 text-base">Strategic marketing plans to help you grow audience and sales, plus support for crowdfunding campaigns. Email lists, Amazon optimization, Kickstarter support, and more!</p>
-      </div>
-    </div>
-  </section>
+        .book-cover-container {
+            overflow: hidden;
+            border-radius: 8px;
+        }
 
-  <!-- Books Section -->
-  <section id="books" class="section-fade-in mt-8">
-    <h2 class="text-3xl font-serif text-center text-purple-700 mb-8">Bookstore</h2>
-    <p class="text-center text-gray-700 max-w-xl mx-auto mb-8 text-lg">Browse and purchase books I’ve authored or helped clients publish. Select a genre below to filter featured works!</p>
-    <!-- Genre filtering buttons -->
-    <div class="flex flex-wrap gap-3 mb-9 justify-center">
-      <button type="button" class="genre-btn px-4 py-2 rounded-full text-sm font-semibold border border-fuchsia-300 bg-white text-fuchsia-700 focus:outline-none genre-selected" data-genre="all">All</button>
-      <button type="button" class="genre-btn px-4 py-2 rounded-full text-sm font-semibold border border-purple-200 bg-white text-purple-700 focus:outline-none" data-genre="fiction">Fiction</button>
-      <button type="button" class="genre-btn px-4 py-2 rounded-full text-sm font-semibold border border-pink-200 bg-white text-pink-700 focus:outline-none" data-genre="nonfiction">Nonfiction</button>
-      <button type="button" class="genre-btn px-4 py-2 rounded-full text-sm font-semibold border border-indigo-200 bg-white text-indigo-700 focus:outline-none" data-genre="childrens">Children's</button>
-      <button type="button" class="genre-btn px-4 py-2 rounded-full text-sm font-semibold border border-yellow-200 bg-white text-yellow-700 focus:outline-none" data-genre="selfhelp">Self-Help</button>
-    </div>
-    <!-- Book grid -->
-    <div id="books-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Book 1 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-fuchsia-400 hover:shadow-2xl" data-genre="fiction">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-purple-800">The Midnight Quill</div>
-          <div class="text-sm text-gray-500 mb-2">By Hannah Claire</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">A gripping tale of creativity, inner journey, and the mysteries that writers face. From inspiration to completion, discover the magic between the lines.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-fuchsia-100 text-fuchsia-700 rounded-full px-3 py-1 text-xs font-semibold">Fiction</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-purple-700">$14.99</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-400 to-fuchsia-500 text-white text-sm font-bold rounded-full shadow hover:from-fuchsia-700 hover:to-pink-600 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Book 2 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-pink-300 hover:shadow-2xl" data-genre="childrens">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-pink-700">Lucy & the Starlit Adventure</div>
-          <div class="text-sm text-gray-500 mb-2">By Emily Rowan (Client)</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">A heartwarming children’s story about courage, imagination, and dreaming big. Perfect bedtime reading with enchanting illustrations.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-pink-100 text-pink-700 rounded-full px-3 py-1 text-xs font-semibold">Children's</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-pink-600">$10.99</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-400 to-fuchsia-500 text-white text-sm font-bold rounded-full shadow hover:from-fuchsia-700 hover:to-pink-600 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Book 3 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-purple-300 hover:shadow-2xl" data-genre="selfhelp">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-purple-700">Write Your Destiny</div>
-          <div class="text-sm text-gray-500 mb-2">By Hannah Claire</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">An actionable self-help book for aspiring writers, packed with practical tips to build discipline, creativity, and confidence to finish your manuscript.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Self-Help</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-purple-600">$16.00</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white text-sm font-bold rounded-full shadow hover:from-purple-700 hover:to-fuchsia-700 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Book 4 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-indigo-300 hover:shadow-2xl" data-genre="nonfiction">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1473187983305-f615310e7daa?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-indigo-700">Publishing Demystified</div>
-          <div class="text-sm text-gray-500 mb-2">By Jason Evers (Client)</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">A comprehensive guide to the publishing landscape, covering self-publishing, Amazon KDP, marketing basics, and author branding in today’s digital world.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-indigo-100 text-indigo-700 rounded-full px-3 py-1 text-xs font-semibold">Nonfiction</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-indigo-600">$18.99</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-400 to-fuchsia-500 text-white text-sm font-bold rounded-full shadow hover:from-fuchsia-700 hover:to-indigo-600 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Book 5 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-yellow-200 hover:shadow-2xl" data-genre="selfhelp">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-yellow-700">From Blank Page to Bestseller</div>
-          <div class="text-sm text-gray-500 mb-2">By Hannah Claire</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">A motivational guide for new authors, helping you overcome blocks and build an author career—includes real case studies and mindset hacks.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-yellow-100 text-yellow-700 rounded-full px-3 py-1 text-xs font-semibold">Self-Help</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-yellow-700">$13.50</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400 to-fuchsia-500 text-white text-sm font-bold rounded-full shadow hover:from-fuchsia-700 hover:to-yellow-600 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Book 6 -->
-      <div class="book-card rounded-xl bg-white shadow-lg px-4 py-7 flex flex-col transition-transform duration-200 border-t-4 border-purple-200 hover:shadow-2xl" data-genre="fiction">
-        <div class="flex flex-col items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=cover&w=240&q=80" alt="Book Cover" class="rounded-lg mb-3 shadow-lg" style="width:130px;height:190px;object-fit:cover;">
-          <div class="text-lg font-serif text-purple-700">The Inkwell Sonata</div>
-          <div class="text-sm text-gray-500 mb-2">By Hannah Claire</div>
-        </div>
-        <div class="flex-1 text-gray-700 mb-3 text-sm">Lose yourself in a lyrical novel celebrating the beauty of words, legacy, and dreams—woven with emotion and the spirit of creative adventure.</div>
-        <div class="mb-4">
-          <span class="inline-block bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Fiction</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-lg text-purple-700">$15.79</span>
-          <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="book-link inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-500 text-white text-sm font-bold rounded-full shadow hover:from-pink-600 hover:to-purple-600 transition-all">
-            Buy <i class="fas fa-shopping-cart ml-2"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+        .book-cover {
+            height: 300px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease-in-out;
+            max-width: 100%;
+        }
 
-  <!-- Quote Section -->
-  <section class="section-fade-in mt-16 py-14 bg-gradient-to-r from-fuchsia-100 via-purple-100 to-pink-100 rounded-xl text-center shadow">
-    <div class="max-w-2xl mx-auto">
-      <blockquote class="text-2xl md:text-3xl font-serif text-fuchsia-700 mb-3 leading-snug">“Every author has a unique story to share. I’m here to make sure your voice is heard on a global scale.”</blockquote>
-      <span class="text-purple-600 text-lg font-semibold">— Hannah Claire</span>
-    </div>
-  </section>
+        .book-cover:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
 
-  <!-- Contact Section -->
-  <section id="contact" class="section-fade-in bg-white rounded-2xl shadow-md mt-8 p-9">
-    <div class="flex flex-col md:flex-row items-start md:items-center md:space-x-10 gap-y-8">
-      <div class="md:w-2/3">
-        <h2 class="text-3xl font-serif text-purple-700 mb-3">Contact</h2>
-        <p class="text-lg text-gray-700 mb-6">Let's start your publishing journey! Reach out and get in touch with me directly.</p>
-        <ul class="mb-6 space-y-2">
-          <li class="flex items-center text-purple-700">
-            <i class="fas fa-location-dot mr-3 text-fuchsia-400"></i>
-            <span>Los Angeles, California, United States</span>
-          </li>
-          <li class="flex items-center text-purple-700">
-            <i class="fas fa-envelope mr-3 text-fuchsia-400"></i>
-            <a href="mailto:Hannahclaire903@gmail.com" class="hover:underline">Hannahclaire903@gmail.com</a>
-          </li>
-          <li class="flex items-center text-purple-700">
-            <i class="fas fa-clock mr-3 text-fuchsia-400"></i> Available 24hrs
-          </li>
-        </ul>
-      </div>
-      <div class="md:w-1/3 flex flex-col items-center w-full">
-        <form class="w-full space-y-5" autocomplete="off" onsubmit="event.preventDefault();">
-          <input type="text" required placeholder="Your Name" class="w-full rounded-xl border border-purple-200 focus:border-fuchsia-400 px-4 py-3 text-gray-700 shadow focus:outline-none transition"/>
-          <input type="email" required placeholder="Your Email" class="w-full rounded-xl border border-purple-200 focus:border-fuchsia-400 px-4 py-3 text-gray-700 shadow focus:outline-none transition"/>
-          <textarea required placeholder="How can I help you?" class="w-full rounded-xl border border-purple-200 focus:border-fuchsia-400 px-4 py-3 text-gray-700 shadow focus:outline-none transition" rows="4"></textarea>
-          <button type="submit" disabled class="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-fuchsia-700 text-white font-semibold px-6 py-3 rounded-full shadow hover:from-fuchsia-500 hover:to-purple-600 transition-all opacity-80 cursor-not-allowed">
-            Send Message <i class="fas fa-paper-plane ml-2"></i>
-          </button>
-          <span class="block text-xs text-gray-400 pt-3">This is a preview form only. To contact Hannah, please email directly.</span>
-        </form>
-      </div>
-    </div>
-  </section>
+        .nav-link {
+            position: relative;
+        }
 
-  <!-- Footer -->
-  <footer class="mt-16 pb-8 pt-8 bg-white shadow text-center text-purple-700 rounded-t-xl">
-    <div class="mb-4 flex flex-col md:flex-row justify-center items-center gap-3">
-      <span class="font-semibold tracking-wide">AUTHOR ASSISTANT</span>
-      <span class="text-gray-300 hidden md:inline-block mx-3">|</span>
-      <span>&copy; 2025 All rights reserved.</span>
-    </div>
-    <div class="flex justify-center space-x-4 mb-2">
-      <a href="mailto:Hannahclaire903@gmail.com" title="Email" class="text-fuchsia-400 hover:text-pink-600 text-xl"><i class="fas fa-envelope"></i></a>
-      <a href="#home" class="text-purple-400 hover:text-purple-600 text-xl"><i class="fas fa-arrow-up"></i></a>
-    </div>
-    <div class="text-xs text-gray-400">
-      Website by Hannah Claire's Author Assistant | Inspired by <a href="https://67e57e74d8b8c.site123.me/" class="hover:underline text-fuchsia-600">original site</a>
-    </div>
-    <div class="text-xs text-gray-300 pt-2">
-      Powered by Tailwind CSS &amp; FontAwesome
-    </div>
-  </footer>
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
 
-  <!-- Animation + Nav + Bookstore JS -->
-  <script>
-    // Section fade-in animations
-    function fadeInOnScroll() {
-      var elements = document.querySelectorAll('.section-fade-in');
-      var scrollY = window.scrollY || window.pageYOffset;
-      var windowH = window.innerHeight;
-      for (var i = 0; i < elements.length; i++) {
-        var el = elements[i];
-        var box = el.getBoundingClientRect();
-        var top = box.top + scrollY;
-        if (scrollY + windowH * 0.9 > top) el.classList.add('visible');
-      }
-    }
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('load', fadeInOnScroll);
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-    // Responsive nav toggle
-    var navToggle = document.getElementById('nav-toggle');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (navToggle && mobileMenu) {
-      navToggle.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
 
-    // Book filtering
-    document.addEventListener('DOMContentLoaded', function() {
-      var genreBtns = document.querySelectorAll('.genre-btn');
-      var cards = document.querySelectorAll('.book-card');
-      function setGenreBtnState(activeBtn) {
-        genreBtns.forEach(function(btn) {
-          btn.classList.remove('genre-selected');
-        });
-        activeBtn.classList.add('genre-selected');
-      }
-      genreBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var genre = btn.getAttribute('data-genre');
-          setGenreBtnState(btn);
-          cards.forEach(function(card) {
-            var cg = card.getAttribute('data-genre');
-            if(genre === 'all' || cg === genre) {
-              card.style.display = "";
-            } else {
-              card.style.display = "none";
+        .section-heading {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .book-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--accent);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .contact-input {
+            border: 1px solid #D1D5DB;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25);
+            outline: none;
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
             }
-          });
-        });
-      });
-    });
-  </script>
-</body>
-</html>
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
 
+        /* Mobile-specific fixes */
+        @media (max-width: 640px) {
+            .book-cover:hover {
+                transform: none;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .fixed.bottom-6.right-6 {
+                right: 1rem;
+                bottom: 1rem;
+                padding: 0.75rem;
+            }
+
+            .hero-bg .container {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .hero-bg img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white bg-opacity-95 shadow-md z-50 py-4">
+        <div class="container mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <div class="text-2xl font-bold text-primary">
+                <span style="color: var(--primary);">Rahul PR</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-primary transition">Home</a>
+                <a href="#books" class="nav-link text-gray-700 hover:text-primary transition">Books</a>
+                <a href="#upcoming" class="nav-link text-gray-700 hover:text-primary transition">Upcoming</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-primary transition">About</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="focus:outline-none">
+                    <svg class="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white p-4 absolute w-full shadow-md">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 hover:text-primary transition">Home</a>
+                <a href="#books" class="text-gray-700 hover:text-primary transition">Books</a>
+                <a href="#upcoming" class="text-gray-700 hover:text-primary transition">Upcoming</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition">About</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-16 overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6 py-24 md:py-32">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">Crafting Magical Stories for Young Minds</h1>
+                    <p class="text-xl text-white opacity-90 mb-8">Award-winning children's book author, bringing imagination to life through the pages of enchanting stories on Amazon KDP.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#books" class="btn-primary px-8 py-3 rounded-lg font-medium text-center">Explore Books</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-primary transition text-center">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-white opacity-20 rounded-full blur"></div>
+                        <img src="logo.jpg" alt="Rahul PR" class="relative rounded-full h-64 w-64 md:h-80 md:w-80 object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-20">
+                <div class="scroll-indicator text-white">
+                    <i class="fas fa-chevron-down text-3xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Book -->
+    <section class="py-20 bg-white overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="book-cover-container mx-auto">
+                        <img src="https://m.media-amazon.com/images/I/61qadYp9JXL._UF1000,1000_QL80_FMwebp_.jpg" alt="Featured Book" class="book-cover rounded-lg">
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="text-sm font-semibold text-accent mb-2" style="color: var(--accent);">FEATURED TITLE</div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">The Legend of Vanchi: The Cursed Rebel</h2>
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.8 (30 reviews)</span>
+                    </div>
+                    <p class="text-gray-700 mb-6">In the heart of colonial Travancore, a cursed rebel named Vanchi rises to fight oppression with the power of a dark goddess. His legacy, sealed by blood and loss, passes to young Ravi, who answers the call of the same enchanted blade. Together, their fates entwine in a cycle of vengeance, sacrifice, and hope. Amid jungle whispers and ancient secrets, they ignite a rebellion that never dies. The Legend of Vanchi: The Cursed Rebel is a tale of fire, freedom, and the shadows that guard it.</p>
+                    <div class="mb-6">
+                        <span class="text-xl font-bold" style="color: var(--primary);">$ 4.00</span>
+                        <span class="text-sm text-gray-500 line-through ml-2">$ 5.00</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://a.co/d/2YXkWc4" target="_blank" class="btn-primary px-8 py-3 rounded-lg font-medium flex items-center justify-center">
+                            <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                        </a>
+                        <a href="https://read.amazon.com/sample/B0F2JGF1JC?f=1&l=en_US&r=b85ff670&rid=QT76SNMGHVV25RHQ1GXB&sid=146-6863024-7477762&cid=A27HNTXC6IQJNX&ref_=litb_m" target="_blank" class="bg-gray-100 text-gray-800 px-8 py-3 rounded-lg font-medium hover:bg-gray-200 transition flex items-center justify-center">
+                            <i class="fas fa-book-open mr-2"></i> Read Sample
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Published Books -->
+    <section id="books" class="py-20 bg-gray-50 overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-6">Published Books</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore Rahul PR's captivating collection of horror, history, action, fantasy, and love stories—tales that thrill, inspire, and ignite the imagination of readers of all ages.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Book 1 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/71s0SdUsOaL._SL1500_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Shadows Of The Mind: Psychological Horror Story</h3>
+                        <p class="text-gray-600 mb-4">Renowned psychiatrist Dr. Anya Petrova enters Voss Manor to confront a patient’s unseen terror. But as reality unravels, she discovers some fears aren’t just in the mind.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 4.20</span>
+                            <a href="https://a.co/d/5Ylf1WV" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/61BIt1khqTL._UF894,1000_QL80_FMwebp_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">A Night in London: A Story of Love and Loss</h3>
+                        <p class="text-gray-600 mb-4">A missed train and a stolen wallet unite Emma and Oliver for one magical night in London. Between secrets and stolen kisses, a deep bond forms.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 5.00</span>
+                            <a href="https://a.co/d/0rAXVJQ" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/615kAyWBQ2L._UF894,1000_QL80_FMwebp_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">The Phoenix Crown: A Kingdom Reborn, A Darkness Unleashed</h3>
+                        <p class="text-gray-600 mb-4">After years of peace, a cryptic message from Kaelen warns of an ancient darkness awakening in the east. At the heart of the mystery lies the Phoenix Crown, a relic ...</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 4.00</span>
+                            <a href="https://a.co/d/hMIi7RV" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/61u7SGk3UiL._UF1000,1000_QL80_FMwebp_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">The Code of Hearts: A Tale of Love, Betrayal, and Encrypted Secrets</h3>
+                        <p class="text-gray-600 mb-4">Ayaan, a brilliant hacker, crosses paths with Eleanor, a cryptography-loving princess hiding her identity. Their connection deepens through secrets and encrypted ...</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 5.00</span>
+                            <a href="https://a.co/d/4yg6LWs" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/61jXm7LN4vL._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Princess And Heart Of The Forest: Princess Aurelia and the Magic</h3>
+                        <p class="text-gray-600 mb-4">Princess Aurelia, a kind-hearted and brave young princess, embarks on a magical journey to save her kingdom from an endless ...</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 10.00</span>
+                            <a href="https://a.co/d/9J1Ok3J" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 6 -->
+                <div class="book-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="book-cover-container flex justify-center mb-6">
+                            <img src="https://m.media-amazon.com/images/I/710YAjMjBGL._UF1000,1000_QL80_FMwebp_.jpg" alt="Book Cover" class="book-cover h-64 w-auto rounded">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cracking the Success Code: Rewire Your Mind, Habits</h3>
+                        <p class="text-gray-600 mb-4">Science-backed strategies to transform setbacks into breakthroughs. A 90-day action plan with habit trackers and worksheets to turn knowledge ...</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary" style="color: var(--primary);">$ 5.00</span>
+                            <a href="https://a.co/d/1ias1Sn" target="_blank" class="btn-primary px-4 py-2 rounded font-medium text-sm"><i class="fab fa-amazon mr-2"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="https://www.amazon.com/s?i=stripbooks&rh=p_27%3ARahul%2BPR&s=relevancerank&text=Rahul+PR&ref=dp_byline_sr_book_1" target="_blank" class="inline-flex items-center text-primary font-semibold hover:underline" style="color: var(--primary);">
+                    View all books on Amazon <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Projects -->
+    <section id="upcoming" class="py-20 bg-white overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-6">Upcoming Projects</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get a sneak peek at what Rahul PR is currently working on and be the first to know when new books are released.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Upcoming Book 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="p-8">
+                        <div class="flex items-start">
+                            <div class="bg-accent text-white rounded-full p-3 mr-4" style="background-color: var(--accent);">
+                                <i class="fas fa-book text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Evil Sister: Psychological Drama</h3>
+                                <p class="text-gray-600 mb-4">"Evil Sister" tells the haunting story of two sisters torn by jealousy, pain, and ancient fears...</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-calendar-alt mr-2"></i>
+                                    <span>Expected Release: May 2025</span>
+                                </div>
+                                <div class="mt-6">
+                                    <a href="#" class="text-primary font-medium hover:underline" style="color: var(--primary);">Join waiting list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Book 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="p-8">
+                        <div class="flex items-start">
+                            <div class="bg-accent text-white rounded-full p-3 mr-4" style="background-color: var(--accent);">
+                                <i class="fas fa-book text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Dabble the Brave Little Duck</h3>
+                                <p class="text-gray-600 mb-4">duck—he had a tiny satchel, a walking stick, and dreams bigger than the pond he was born in...</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-calendar-alt mr-2"></i>
+                                    <span>Expected Release: May 2025</span>
+                                </div>
+                                <div class="mt-6">
+                                    <a href="#" class="text-primary font-medium hover:underline" style="color: var(--primary);">Join waiting list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16" data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="text-2xl font-bold mb-6">My Services</h3>
+                <div class="space-y-8">
+                    <div class="timeline-item pl-8">
+                        <h4 class="font-bold">Book Cover Design</h4>
+                        <p class="text-gray-600">Professional eBook and print cover designs that capture your story’s essence and attract readers. Custom-made to suit every genre.</p>
+                    </div>
+                    <div class="timeline-item pl-8">
+                        <h4 class="font-bold">Social Media Post & Mockup Creation</h4>
+                        <p class="text-gray-600">Eye-catching social media graphics and realistic mockups for promotional use. Perfect for authors, brands, and marketers.</p>
+                    </div>
+                    <div class="timeline-item pl-8">
+                        <h4 class="font-bold">Promotional Video Creation</h4>
+                        <p class="text-gray-600">Short, engaging videos to promote your book, product, or brand on digital platforms. Includes text animation, music, and storytelling elements.</p>
+                    </div>
+                    <div class="timeline-item pl-8">
+                        <h4 class="font-bold">Website Creation</h4>
+                        <p class="text-gray-600">Modern, user-friendly websites designed for authors, creatives, and small businesses. Fully responsive and tailored to your style.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Author -->
+    <section id="about" class="py-20 bg-gray-50 overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-2/5 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="profile.jpg" alt="Rahul PR" class="rounded-lg shadow-xl w-full max-w-md mx-auto">
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                    <h2 class="section-heading text-3xl md:text-4xl font-bold mb-6">About Rahul PR</h2>
+                    <p class="text-gray-700 mb-6">I'm Rahul PR — a writer, artist, designer, web developer, video editor, and content creator based in Kochi, Kerala, India. I wear many creative hats, but storytelling is at the heart of everything I do.</p>
+                    <p class="text-gray-700 mb-6">I write across multiple genres including children’s stories, romance, fantasy, horror, psychological tales, educational content, and science fiction. My diverse background in elementary education helps me craft stories that are both meaningful and memorable.</p>
+                    <p class="text-gray-700 mb-6">Born and raised in Kerala, I bring cultural depth and imagination into each project I take on—whether it’s a beautifully illustrated kids’ book, a compelling promotional video, or a fully functional website. Beyond writing, I design book covers, create social media content, build websites, and run storytelling workshops to spark creativity in young minds and aspiring creators.</p>
+                    <div class="mt-8">
+                        <h3 class="font-bold text-xl mb-4">Connect with Rahul</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/share/16CBSzNCYV/" class="text-gray-600 hover:text-primary transition">
+                                <i class="fab fa-facebook-f text-2xl"></i>
+                            </a>
+                            <a href="https://x.com/Devil_2815" class="text-gray-600 hover:text-primary transition">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/devi1_0666" class="text-gray-600 hover:text-primary transition">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/rahul-pr-334561226" class="text-gray-600 hover:text-primary transition">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="mailto:dg.rahul.666@gmail.com" class="text-gray-600 hover:text-primary transition">
+                                <i class="fab fa-google text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-6">What Readers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from parents, teachers, and young readers who have enjoyed Rahul PR's books.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-md" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600 text-sm">4.5</span>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Wow! Your book caught my eye. As a fellow author, I know the dedication it takes, this is amazing! Keep shining, and we'll all celebrate together!"</p>
+                    <div class="flex items-center">
+                        <div class="mr-4">
+                            <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center font-bold" style="background-color: var(--primary);">A</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Caitlin Devlin</h4>
+                            <p class="text-gray-600 text-sm">Friend</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-50 overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or want to arrange a book reading event? Reach out to Rahul PR directly.</p>
+            </div>
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 lg:pl-10" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="mr-4 text-primary" style="color: var(--primary);">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">dg.rahul.666@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="mr-4 text-primary" style="color: var(--primary);">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Location</h4>
+                                    <p class="text-gray-600">Kochi, Kerala, India</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="mr-4 text-primary" style="color: var(--primary);">
+                                    <i class="fas fa-book-reader text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Books Available On</h4>
+                                    <p class="text-gray-600">Amazon, Amazon Kindle, Google Play Books</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="mr-4 text-primary" style="color: var(--primary);">
+                                    <i class="fas fa-handshake text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">I Can Help</h4>
+                                    <p class="text-gray-600">Designing (Cover, Logo, and Post), Web Designing<br>Contact: ahulpravi14@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Follow Rahul PR</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.facebook.com/share/16CBSzNCYV/" class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://x.com/Devil_2815" class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/devi1_0666" class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/rahul-pr-334561226" class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 bg-primary text-white overflow-x-hidden" style="background-color: var(--primary);">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Rahul's Reader Club</h2>
+                <p class="text-xl opacity-90 mb-8">Subscribe to get updates on new book releases, exclusive content, and special offers.</p>
+                <form action="#" method="POST" class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-800">
+                    <button type="submit" class="bg-accent text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition" style="background-color: var(--accent);">Subscribe</button>
+                </form>
+                <p class="text-sm opacity-80 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 overflow-x-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Rahul PR</h3>
+                    <p class="text-gray-400 max-w-xs">I'm Rahul PR, a creative storyteller and designer from Kerala, crafting books, videos, and digital experiences across genres.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.facebook.com/share/16CBSzNCYV/" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/Devil_2815" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/devi1_0666" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rahul-pr-334561226" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:dg.rahul.666@gmail.com" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#books" class="text-gray-400 hover:text-white transition">Books</a></li>
+                            <li><a href="#upcoming" class="text-gray-400 hover:text-white transition">Upcoming</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold mb-4">Books</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">The Legend of Vanchi</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Shadows Of The Mind</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">The Lost Pirate Treasure</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">The Phoenix Crown</a></li>
+                            <li><a href="https://www.amazon.com/s?i=stripbooks&rh=p_27%3ARahul%2BPR&s=relevancerank&text=Rahul+PR&ref=dp_byline_sr_book_1" class="text-gray-400 hover:text-white transition">All Books</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold mb-4">Contact</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope text-gray-400 mt-1 mr-2"></i>
+                                <span class="text-gray-400">dg.rahul.666@gmail.com</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-2"></i>
+                                <span class="text-gray-400">Kochi, Kerala, India</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Rahul PR. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917306078276" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('bg-opacity-95');
+                navbar.classList.add('bg-opacity-100');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.remove('bg-opacity-100');
+                navbar.classList.add('bg-opacity-95');
+            }
+        });
+    </script>
+</body>
+  </html>
